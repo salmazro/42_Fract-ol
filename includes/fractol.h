@@ -6,7 +6,7 @@
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 22:19:56 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/14 22:19:57 by salmazro         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:09:28 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,37 @@ typedef struct s_mix
 	int			color_change;
 }			t_mix;
 
-int		hue_to_rgb(int h);
+int		loop_hook(t_mix *mix);
+
+int		fractal(t_mix *mix);
+
+void	ft_parser(int ac, char **av, t_mix *mix);
 
 void	ft_error(char *error);
 
 size_t	ft_strlen(const char *str);
 
+void	check_input(t_mix *mix, int ac, char **av);
+
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	my_mlx_put_pixel(t_data *data, int x, int y, int color);
 
-void	hook(int keycode, t_mix *mix);
+void	itera_color(int keycode, t_mix *mix);
 
 int		ft_hook(int keycode, t_mix *mix);
 
 void	var_init(t_mix *mix);
 
-int		clox(t_mix *mix);
+int		ft_escape(t_mix *mix);
 
 int		shifter(int color, int mod);
 
 int		zoom(int keycode, int x, int y, t_mix *mix);
+
+void	ft_zoom(int keycode, t_mix *mix);
+
+int		ft_all_hooks(int keycode, t_mix *mix);
 
 int		jul(t_mix *mix);
 
@@ -84,7 +94,7 @@ int		mand(t_mix *mix);
 
 int		mouse(int keycode, int x, int y, t_mix *mix);
 
-int		is_invalid(char *n);
+int		is_double(char *n);
 
 int		ft_intlen(char *number);
 
@@ -94,6 +104,6 @@ int		ft_atoi(const char *str);
 
 char	*ft_strchr(const char *s, int c);
 
-double	ft_atoi_fractol(char *str);
+double	ft_atod_fractol(char *str);
 
 #endif

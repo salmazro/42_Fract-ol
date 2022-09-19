@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   julie_math.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 22:20:26 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/14 22:20:27 by salmazro         ###   ########.fr       */
+/*   Created: 2022/09/16 17:54:06 by salmazro          #+#    #+#             */
+/*   Updated: 2022/09/16 20:06:45 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	is_invalid(char *n)
+int	is_double(char *n)
 {
 	char	*dot;
 
@@ -81,7 +81,7 @@ int	ft_atoi(const char *str)
 	return (number);
 }
 
-double	ft_atoi_fractol(char *str)
+double	ft_atod_fractol(char *str)
 {
 	double	value;
 	char	*mantissa;
@@ -89,7 +89,7 @@ double	ft_atoi_fractol(char *str)
 	int		len;
 
 	sign = 1;
-	if (!str || is_invalid(str))
+	if (!str || is_double(str))
 	{
 		exit(1);
 	}

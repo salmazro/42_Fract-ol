@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper2.c                                          :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 22:20:36 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/14 22:20:37 by salmazro         ###   ########.fr       */
+/*   Created: 2022/09/16 17:53:58 by salmazro          #+#    #+#             */
+/*   Updated: 2022/09/16 20:16:08 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/fractol.h"
-
-void	my_mlx_put_pixel(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -63,4 +54,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if ((n - 1) != i)
 		return (1);
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+}
+
+void	ft_error(char *error)
+{
+	while (*error)
+		write(1, error++, 1);
+	exit(1);
 }

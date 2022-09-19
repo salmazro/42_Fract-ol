@@ -5,19 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 22:20:41 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/14 22:20:42 by salmazro         ###   ########.fr       */
+/*   Created: 2022/09/16 17:53:53 by salmazro          #+#    #+#             */
+/*   Updated: 2022/09/16 17:54:21 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	hook(int keycode, t_mix *mix)
+void	itera_color(int keycode, t_mix *mix)
 {
-	if (keycode == 24)
-		mix->cor.a_zoom *= 2;
-	if (keycode == 27)
-		mix->cor.a_zoom /= 2;
 	if (keycode == 34)
 		mix->max_iteration += 5;
 	if (keycode == 31)
@@ -26,7 +22,15 @@ void	hook(int keycode, t_mix *mix)
 		mix->color_change = 0x880808 * rand();
 }
 
-int	clox(t_mix *mix)
+void	ft_zoom(int keycode, t_mix *mix)
+{
+	if (keycode == 24)
+		mix->cor.a_zoom *= 2;
+	if (keycode == 27)
+		mix->cor.a_zoom /= 2;
+}
+
+int	ft_escape(t_mix *mix)
 {
 	mlx_destroy_window(mix->mlx, mix->win);
 	mlx_destroy_image(mix->mlx, mix->data.img);
@@ -49,7 +53,14 @@ int	ft_hook(int keycode, t_mix *mix)
 		mix->cor.mo_y -= 0.05 / mix->cor.a_zoom;
 	else if (keycode == 125)
 		mix->cor.mo_y += 0.05 / mix->cor.a_zoom;
-	hook(keycode, mix);
+	return (0);
+}
+
+int	ft_all_hooks(int keycode, t_mix *mix)
+{
+	ft_hook(keycode, mix);
+	itera_color(keycode, mix);
+	ft_zoom(keycode, mix);
 	return (0);
 }
 
@@ -57,14 +68,9 @@ int	mouse(int keycode, int x, int y, t_mix *mix)
 {
 	(void)x;
 	(void)y;
-	if (keycode == 4)
-	{
+	if (keycode == 5)
 		mix->cor.a_zoom *= 2;
-		mix->cor.mo_x += 1.70 * (mix->cor.i - W / 2)
-			/ (0.365 * W * mix->cor.a_zoom);
-		mix->cor.mo_y += (mix->cor.j - H / 2) / (0.25 * H * mix->cor.a_zoom);
-	}
-	else if (keycode == 5)
+	else if (keycode == 4)
 		mix->cor.a_zoom /= 2;
 	return (0);
 }
