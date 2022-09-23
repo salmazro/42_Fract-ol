@@ -6,7 +6,7 @@
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:53:53 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/16 17:54:21 by salmazro         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:29:15 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@ void	itera_color(int keycode, t_mix *mix)
 		mix->max_iteration -= 5;
 	if (keycode == 18)
 		mix->color_change = 0x880808 * rand();
-}
-
-void	ft_zoom(int keycode, t_mix *mix)
-{
-	if (keycode == 24)
-		mix->cor.a_zoom *= 2;
-	if (keycode == 27)
-		mix->cor.a_zoom /= 2;
-}
-
-int	ft_escape(t_mix *mix)
-{
-	mlx_destroy_window(mix->mlx, mix->win);
-	mlx_destroy_image(mix->mlx, mix->data.img);
-	exit(0);
 }
 
 int	ft_hook(int keycode, t_mix *mix)
@@ -56,12 +41,12 @@ int	ft_hook(int keycode, t_mix *mix)
 	return (0);
 }
 
-int	ft_all_hooks(int keycode, t_mix *mix)
+void	ft_zoom(int keycode, t_mix *mix)
 {
-	ft_hook(keycode, mix);
-	itera_color(keycode, mix);
-	ft_zoom(keycode, mix);
-	return (0);
+	if (keycode == 24)
+		mix->cor.a_zoom *= 2;
+	if (keycode == 27)
+		mix->cor.a_zoom /= 2;
 }
 
 int	mouse(int keycode, int x, int y, t_mix *mix)
@@ -73,4 +58,11 @@ int	mouse(int keycode, int x, int y, t_mix *mix)
 	else if (keycode == 4)
 		mix->cor.a_zoom /= 2;
 	return (0);
+}
+
+int	ft_escape(t_mix *mix)
+{
+	mlx_destroy_window(mix->mlx, mix->win);
+	mlx_destroy_image(mix->mlx, mix->data.img);
+	exit(0);
 }

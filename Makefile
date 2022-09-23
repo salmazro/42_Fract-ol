@@ -2,7 +2,7 @@ NAME		=	fractol
 LIBX_DIR	=	minilibx
 LIBX		=	$(LIBX_DIR)/libmlx.a
 FRAMEWORK	=	-L $(LIBX_DIR) -lmlx -framework OpenGL -framework AppKit
-SRCS 		= srcs/main.c srcs/keyHook.c srcs/math_utils.c srcs/julie_math.c srcs/helper1.c srcs/libft.c srcs/parser.c
+SRCS 		= srcs/main.c srcs/keyHook.c srcs/math_utils.c srcs/julia_math.c srcs/image.c srcs/libft.c srcs/parser.c
 OBJS		=	$(SRCS:%c=%o)
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
