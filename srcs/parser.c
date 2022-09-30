@@ -6,7 +6,7 @@
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:53:33 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/22 17:50:31 by salmazro         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:25:30 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_parser(int ac, char **av, t_mix *mix)
 	else if (!ft_strncmp(av[1], "julia", ft_strlen("julia")))
 		check_input(mix, ac, av);
 	else
-		ft_error("Two options:\nmandelbrot\njulie (cord - x) (cord - y)\n");
+		ft_error("Two options:\nmandelbrot\njulia (cord - x) (cord - y)\n");
 }
 
 void	check_input(t_mix *mix, int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:53:53 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/22 21:29:15 by salmazro         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:23:38 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	itera_color(int keycode, t_mix *mix)
 	if (keycode == 31)
 		mix->max_iteration -= 5;
 	if (keycode == 18)
-		mix->color_change = 0x880808 * rand();
+		mix->color_change = mix->frac_color;
+	if (keycode == 192)
+		mix->color_change = 0xF7F9F9;
+	if (keycode == 320)
+		mix->color_change = mix->color_change * rand();
 }
 
 int	ft_hook(int keycode, t_mix *mix)

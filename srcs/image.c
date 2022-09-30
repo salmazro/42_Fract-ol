@@ -6,7 +6,7 @@
 /*   By: salmazro <salmazro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:54:02 by salmazro          #+#    #+#             */
-/*   Updated: 2022/09/23 16:45:10 by salmazro         ###   ########.fr       */
+/*   Updated: 2022/09/24 14:52:29 by salmazro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	var_init(t_mix *mix)
 {
 	mix->max_iteration = 10;
-	mix->color_change = 0xFFD700;
+	mix->frac_color = 50288821;
+	mix->color_change = 0xF7F9F9;
 	mix->cor.a_zoom = 1;
 	mix->cor.mo_x = 0.01;
 	mix->cor.mo_y = 0.01;
@@ -45,7 +46,7 @@ void	draw_image(t_mix *mix)
 				my_mlx_put_pixel(&mix->data, mix->cor.i, mix->cor.j, 0);
 			else
 				my_mlx_put_pixel(&mix->data, mix->cor.i, mix->cor.j,
-					mix->color_change * iteration / 100);
+					mix->color_change * iteration);
 			mix->cor.j++;
 		}
 		mix->cor.i++;
